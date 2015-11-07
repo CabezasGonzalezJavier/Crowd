@@ -1,4 +1,4 @@
-package com.javier.crowd.models;
+package com.javier.crowd.model;
 
 import java.util.ArrayList;
 import java.util.List;

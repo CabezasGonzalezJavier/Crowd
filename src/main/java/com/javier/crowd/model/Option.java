@@ -1,4 +1,4 @@
-package com.javier.crowd.models;
+package com.javier.crowd.model;
 
 /**
  * Created by javiergonzalezcabezas on 7/11/15.

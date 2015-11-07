@@ -15,28 +15,28 @@ import java.io.OutputStreamWriter;
  * Created by javiergonzalezcabezas on 7/11/15.
  */
 public class Utils {
-    static final String TASK = "Utils";
+    static final String TAG = "Utils";
 
-    public static void writeToFile(String data, Activity activity) {
+    public static void writeToFile(String data, Context context) {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                    activity.openFileOutput(Constans.NAME_FILE_TASK, Context.MODE_PRIVATE));
+                    context.openFileOutput(Constans.NAME_FILE_TASK, Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
         } catch (IOException e) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("File write failed: ");
             stringBuilder.append(e.toString());
-            Log.e(TASK, stringBuilder.toString());
+            Log.e(TAG, stringBuilder.toString());
         }
     }
 
-    public static String readFromFile(Activity activity) {
+    public static String readFromFile(Context context) {
 
         String ret = "";
 
         try {
-            InputStream inputStream = activity.openFileInput(Constans.NAME_FILE_TASK);
+            InputStream inputStream = context.openFileInput(Constans.NAME_FILE_TASK);
 
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(
@@ -57,12 +57,12 @@ public class Utils {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("File not found: ");
             stringBuilder.append(e.toString());
-            Log.e(TASK, stringBuilder.toString());
+            Log.e(TAG, stringBuilder.toString());
         } catch (IOException e) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Can not read file: ");
             stringBuilder.append(e.toString());
-            Log.e(TASK,  stringBuilder.toString());
+            Log.e(TAG,  stringBuilder.toString());
         }
         return ret;
     }
