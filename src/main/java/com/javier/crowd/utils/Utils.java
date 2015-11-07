@@ -1,6 +1,5 @@
 package com.javier.crowd.utils;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -66,4 +65,5 @@ public class Utils {
         }
         return ret;
     }
+
 }
