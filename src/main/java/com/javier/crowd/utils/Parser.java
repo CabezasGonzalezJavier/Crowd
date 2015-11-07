@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class Parser {
 
+
+    public Parser() {
+
+    }
+
     public static List<Task> parserJSON(String data) {
         List<Task> listTask = new ArrayList<>();
         JSONObject objectTask = null;
@@ -24,25 +29,26 @@ public class Parser {
             for (int i = 0; i< arrayJson.length(); i++) {
 
                 Task task = new Task();
-                Integer idTask = arrayJson.getJSONObject(i).getInt(Constans.ID);
-                String titleTask = arrayJson.getJSONObject(i).getString(Constans.TITLE);
-                JSONArray arrayQuestions = arrayJson.getJSONObject(i).getJSONArray(Constans.QUESTIONS);
+                Integer idTask = arrayJson.getJSONObject(i).getInt(Constants.ID);
+                String titleTask = arrayJson.getJSONObject(i).getString(Constants.TITLE);
+                Boolean hiddenTask = arrayJson.getJSONObject(i).getBoolean(Constants.HIDDEN);
+                JSONArray arrayQuestions = arrayJson.getJSONObject(i).getJSONArray(Constants.QUESTIONS);
                 List<Question> questions = new ArrayList<>();
                 for (int j = 0; j< arrayQuestions.length(); j++) {
 
                     Question question = new Question();
-                    Integer idQuestions = arrayQuestions.getJSONObject(j).getInt(Constans.ID);
-                    String titleQuestions = arrayQuestions.getJSONObject(j).getString(Constans.TITLE);
-                    String summaryQuestions = arrayQuestions.getJSONObject(j).getString(Constans.SUMMARY);
-                    JSONArray arrayOptions = arrayQuestions.getJSONObject(j).getJSONArray(Constans.OPTIONS);
+                    Integer idQuestions = arrayQuestions.getJSONObject(j).getInt(Constants.ID);
+                    String titleQuestions = arrayQuestions.getJSONObject(j).getString(Constants.TITLE);
+                    String summaryQuestions = arrayQuestions.getJSONObject(j).getString(Constants.SUMMARY);
+                    JSONArray arrayOptions = arrayQuestions.getJSONObject(j).getJSONArray(Constants.OPTIONS);
                     List<Option> options = new ArrayList<>();
 
                     for (int w = 0; w < arrayOptions.length(); w++) {
 
                         Option option = new Option();
-                        Integer idOptions = arrayOptions.getJSONObject(w).getInt(Constans.ID);
-                        String typeOptions = arrayOptions.getJSONObject(w).getString(Constans.TYPE);
-                        String labelOptions = arrayOptions.getJSONObject(w).getString(Constans.LABEL);
+                        Integer idOptions = arrayOptions.getJSONObject(w).getInt(Constants.ID);
+                        String typeOptions = arrayOptions.getJSONObject(w).getString(Constants.TYPE);
+                        String labelOptions = arrayOptions.getJSONObject(w).getString(Constants.LABEL);
 
                         option.setId(idOptions);
                         option.setType(typeOptions);
@@ -58,12 +64,15 @@ public class Parser {
                 task.setId(idTask);
                 task.setTitle(titleTask);
                 task.setQuestions(questions);
+                task.setHidden(hiddenTask);
                 listTask.add(task);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return listTask;
     }
+
 }

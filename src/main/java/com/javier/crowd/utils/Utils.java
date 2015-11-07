@@ -19,7 +19,7 @@ public class Utils {
     public static void writeToFile(String data, Context context) {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                    context.openFileOutput(Constans.NAME_FILE_TASK, Context.MODE_PRIVATE));
+                    context.openFileOutput(Constants.NAME_FILE_TASK, Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
         } catch (IOException e) {
@@ -35,7 +35,7 @@ public class Utils {
         String ret = "";
 
         try {
-            InputStream inputStream = context.openFileInput(Constans.NAME_FILE_TASK);
+            InputStream inputStream = context.openFileInput(Constants.NAME_FILE_TASK);
 
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(

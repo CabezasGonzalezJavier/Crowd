@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
@@ -32,5 +33,10 @@ public class TaskPresenterTest {
         data = "Hello";
         assertNotNull(data);
         assertTrue(data.toString().equals("Hello"));
+    }
+
+    @Test
+    public void assertTask() {
+
     }
 }

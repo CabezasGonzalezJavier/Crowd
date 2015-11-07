@@ -1,13 +1,21 @@
 package com.javier.crowd.model;
 
+import com.javier.crowd.utils.Constants;
+
+import garin.artemiy.sqlitesimple.library.annotations.Column;
+
 /**
  * Created by javiergonzalezcabezas on 7/11/15.
  */
 public class Option {
-
+    @Column(name = Constants._ID)
     private Integer id;
+    @Column(name = Constants.TYPE)
     private String type;
+    @Column(name = Constants.LABEL)
     private String label;
+    @Column(name = Constants.QUESTION_ID)
+    private Integer questionId;
 
     /**
      *
