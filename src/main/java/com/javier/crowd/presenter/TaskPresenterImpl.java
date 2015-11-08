@@ -2,9 +2,9 @@ package com.javier.crowd.presenter;
 
 import android.util.Log;
 
-import com.javier.crowd.dao.OptionDAO;
-import com.javier.crowd.dao.QuestionsDAO;
-import com.javier.crowd.dao.TaskDAO;
+import com.javier.crowd.model.dao.OptionDAO;
+import com.javier.crowd.model.dao.QuestionsDAO;
+import com.javier.crowd.model.dao.TaskDAO;
 import com.javier.crowd.model.Option;
 import com.javier.crowd.model.Question;
 import com.javier.crowd.model.Task;
@@ -46,7 +46,7 @@ public class TaskPresenterImpl implements TaskPresenter{
         insertDataBase(listTask);
         getData();
 
-        mTaskView.returnData(listTask.get(0).getTitle());
+        mTaskView.returnData(listTask);
     }
 
     public boolean exitsDB(){

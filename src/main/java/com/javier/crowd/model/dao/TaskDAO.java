@@ -1,4 +1,4 @@
-package com.javier.crowd.dao;
+package com.javier.crowd.model.dao;
 
 import android.content.Context;
 
