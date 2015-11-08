@@ -8,6 +8,7 @@ import org.json.JSONObject;
  * Created by javiergonzalezcabezas on 8/11/15.
  */
 public class Validator {
+
     public static boolean isJSONValid(String test) {
         try {
             new JSONObject(test);
@@ -20,5 +21,6 @@ public class Validator {
             }
         }
         return true;
+
     }
 }

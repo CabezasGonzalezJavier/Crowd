@@ -16,11 +16,6 @@ import java.util.List;
  */
 public class Parser {
 
-
-    public Parser() {
-
-    }
-
     public static List<Task> parserJSON(String data) {
         List<Task> listTask = new ArrayList<>();
         JSONObject objectTask = null;

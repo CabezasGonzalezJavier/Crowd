@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements TaskView, Adapter
 
     @Override
     public void inValidJSON() {
-        Toast.makeText(this,R.string.no_json, Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.activity_main_no_json, Toast.LENGTH_LONG).show();
     }
 
     @Override

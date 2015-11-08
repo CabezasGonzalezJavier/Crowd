@@ -54,6 +54,7 @@ public class TaskPresenterImpl implements TaskPresenter{
         }
     }
 
+    @Override
     public boolean exitsDB(){
         int task = mTaskDAO.getCount();
         int question = mQuestionsDAO.getCount();

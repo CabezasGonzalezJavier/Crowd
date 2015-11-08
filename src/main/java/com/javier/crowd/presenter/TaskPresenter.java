@@ -5,4 +5,5 @@ package com.javier.crowd.presenter;
  */
 public interface TaskPresenter {
     void importer();
+    boolean exitsDB();
 }
