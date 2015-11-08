@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface TaskView {
     void returnData(List<Task> list);
+    void inValidJSON();
     Context getContext();
 }

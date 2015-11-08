@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Crowd</string>
     <string name="next">Next</string>
+    <string name="no_json">JSON is invalid</string>
 </resources>

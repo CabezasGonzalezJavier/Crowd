@@ -10,6 +10,7 @@ import com.javier.crowd.model.Question;
 import com.javier.crowd.model.Task;
 import com.javier.crowd.utils.Parser;
 import com.javier.crowd.utils.Utils;
+import com.javier.crowd.utils.Validator;
 import com.javier.crowd.view.TaskView;
 
 import java.util.ArrayList;
@@ -42,11 +43,15 @@ public class TaskPresenterImpl implements TaskPresenter{
         String data = new String();
 
         data = Utils.readFromFile(mTaskView.getContext());
-        List<Task> listTask = Parser.parserJSON(data);
-        insertDataBase(listTask);
-        getData();
+        if (Validator.isJSONValid(data)){
+            List<Task> listTask = Parser.parserJSON(data);
+            insertDataBase(listTask);
+            getData();
 
-        mTaskView.returnData(listTask);
+            mTaskView.returnData(listTask);
+        } else {
+            mTaskView.inValidJSON();
+        }
     }
 
     public boolean exitsDB(){
@@ -58,30 +63,32 @@ public class TaskPresenterImpl implements TaskPresenter{
     }
 
     public void insertDataBase(List<Task> listTask){
-        mTaskDAO.createAll(listTask);
-        List<Question> questions = new ArrayList<>();
-        List<Option> options = new ArrayList<>();
-        for (int i = 0; i< listTask.size(); i++) {
+        if(!exitsDB()) {
+            mTaskDAO.createAll(listTask);
+            List<Question> questions = new ArrayList<>();
+            List<Option> options = new ArrayList<>();
+            for (int i = 0; i < listTask.size(); i++) {
 
-            listTask.get(i).getQuestions();
+                listTask.get(i).getQuestions();
 
-            for (int j= 0; j < listTask.get(i).getQuestions().size(); j++) {
-                Question question = listTask.get(i).getQuestions().get(j);
-                question.setTaskId(String.valueOf(i+1));
-                questions.add(question);
+                for (int j = 0; j < listTask.get(i).getQuestions().size(); j++) {
+                    Question question = listTask.get(i).getQuestions().get(j);
+                    question.setTaskId(String.valueOf(i + 1));
+                    questions.add(question);
 
-                for (int w = 0; w< listTask.get(i).getQuestions().get(j).getOptions().size(); w++){
-                    Option option = listTask.get(i).getQuestions().get(j).getOptions().get(w);
-                    option.setQuestionId(j+1);
-                    options.add(option);
+                    for (int w = 0; w < listTask.get(i).getQuestions().get(j).getOptions().size(); w++) {
+                        Option option = listTask.get(i).getQuestions().get(j).getOptions().get(w);
+                        option.setQuestionId(j + 1);
+                        options.add(option);
+                    }
+
+
                 }
 
-
             }
-
+            mQuestionsDAO.createAll(questions);
+            mOptionDAO.createAll(options);
         }
-        mQuestionsDAO.createAll(questions);
-        mOptionDAO.createAll(options);
     }
 
     public void getData() {

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.javier.crowd.model.Task;
 import com.javier.crowd.presenter.TaskPresenterImpl;
@@ -39,8 +40,14 @@ public class MainActivity extends AppCompatActivity implements TaskView, Adapter
 
     @Override
     public void returnData(List<Task> list) {
+
         TaskAdapter adapter = new TaskAdapter(this, list);
         mListView.setAdapter(adapter);
+    }
+
+    @Override
+    public void inValidJSON() {
+        Toast.makeText(this,R.string.no_json, Toast.LENGTH_LONG).show();
     }
 
     @Override
