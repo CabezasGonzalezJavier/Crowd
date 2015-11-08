@@ -50,11 +50,11 @@ public class TaskPresenterImpl implements TaskPresenter{
     }
 
     public boolean exitsDB(){
-//        int task = mTaskDAO.getCount();
-        int task = mOptionDAO.getCount();
-//        int task = mQuestionsDAO.getCount();
+        int task = mTaskDAO.getCount();
+        int question = mQuestionsDAO.getCount();
+        int option = mOptionDAO.getCount();
 
-        return task > 0;
+        return option > 0 && question > 0 && task > 0;
     }
 
     public void insertDataBase(List<Task> listTask){
@@ -66,11 +66,14 @@ public class TaskPresenterImpl implements TaskPresenter{
             listTask.get(i).getQuestions();
 
             for (int j= 0; j < listTask.get(i).getQuestions().size(); j++) {
-
-                questions.add(listTask.get(i).getQuestions().get(j));
+                Question question = listTask.get(i).getQuestions().get(j);
+                question.setTaskId(String.valueOf(i+1));
+                questions.add(question);
 
                 for (int w = 0; w< listTask.get(i).getQuestions().get(j).getOptions().size(); w++){
-                    options.add(listTask.get(i).getQuestions().get(j).getOptions().get(w));
+                    Option option = listTask.get(i).getQuestions().get(j).getOptions().get(w);
+                    option.setQuestionId(j+1);
+                    options.add(option);
                 }
 
 

@@ -18,7 +18,9 @@ public class Constants {
     public static final String HIDDEN = "hidden";
     public static final String QUESTION_ID = "questionId";
     public static final String TASK_ID = "taskId";
+    public static final String SET_OPTION = "setOption";
 
 
+    public static final String ID_TASK_INTENT = "id_task_INTENT";
 
 }

@@ -17,6 +17,14 @@ public class Option {
     @Column(name = Constants.QUESTION_ID)
     private Integer questionId;
 
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
+
     /**
      *
      * @return

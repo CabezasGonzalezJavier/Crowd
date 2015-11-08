@@ -20,13 +20,23 @@ public class Question {
     private String summary;
     private List<Option> options = new ArrayList<Option>();
     @Column(name = Constants.TASK_ID)
-    private Integer taskId;
+    private String taskId;
+    @Column(name = Constants.SET_OPTION)
+    private String setOption;
 
-    public Integer getTaskId() {
+    public String getSetOption() {
+        return setOption;
+    }
+
+    public void setSetOption(String setOption) {
+        this.setOption = setOption;
+    }
+
+    public String getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(Integer taskId) {
+    public void setTaskId(String taskId) {
         this.taskId = taskId;
     }
 
