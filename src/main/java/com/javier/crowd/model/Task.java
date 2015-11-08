@@ -1,15 +1,22 @@
-package com.javier.crowd.models;
+package com.javier.crowd.model;
+
+import com.javier.crowd.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import garin.artemiy.sqlitesimple.library.annotations.Column;
 
 /**
  * Created by javiergonzalezcabezas on 7/11/15.
  */
 public class Task {
+    @Column(name = Constants._ID)
     private Integer id;
+    @Column(name = Constants.TITLE)
     private String title;
     private List<Question> questions = new ArrayList<Question>();
+    @Column(name = Constants.HIDDEN)
     private Boolean hidden;
 
     /**
